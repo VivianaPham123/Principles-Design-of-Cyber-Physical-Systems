@@ -1,7 +1,11 @@
 int Brain_precision = 0, Console_precision = 0;
 
 
-float myVariable;
+float myVariable, Index, z;
+
+
+float VEX[18][3];
+float VEX2[17][3];
 
 
 event message1 = event();
@@ -9,12 +13,65 @@ event message1 = event();
 
 // "when started" hat block
 int whenStarted1() {
- RoboticArm1.setMasteringValues(1768.0,2111.0,1729.0,574.0);
+ z = 2.0;
+ RoboticArm1.setMasteringValues(1786.0,1926.0,1785.0,508.0);
  RoboticArm1.setToolTipOffset(1.05, 0.0, -1.0);
- RoboticArm1.moveToPositionJoint(5.2, 4.37, 2.0);
- RoboticArm1.moveToPositionJoint(5.72, -1.77, 2.0);
- wait(0.25, seconds);
- RoboticArm1.moveToPositionLinear(4.1, 5.25, 2.0);
+ VEX2[0][0] = 5.34;
+ VEX2[0][1] = -3.07;
+ VEX2[0][2] = z;
+ VEX2[1][0] = 8.34;
+ VEX2[1][1] = -1.76;
+ VEX2[1][2] = z + -0.2;
+ VEX2[2][0] = 5.34;
+ VEX2[2][1] = -1.24;
+ VEX2[2][2] = z;
+ VEX2[3][0] = 5.34;
+ VEX2[3][1] = -1.24;
+ VEX2[3][2] = 3.5;
+ VEX2[4][0] = 5.71;
+ VEX2[4][1] = 1.0;
+ VEX2[4][2] = z;
+ VEX2[5][0] = 5.54;
+ VEX2[5][1] = -0.5;
+ VEX2[5][2] = z;
+ VEX2[6][0] = 8.5;
+ VEX2[6][1] = -0.5;
+ VEX2[6][2] = z;
+ VEX2[7][0] = 8.5;
+ VEX2[7][1] = 1.0;
+ VEX2[7][2] = z + -0.5;
+ VEX2[8][0] = 8.5;
+ VEX2[8][1] = 1.0;
+ VEX2[8][2] = 3.5;
+ VEX2[9][0] = 6.5;
+ VEX2[9][1] = 1.0;
+ VEX2[9][2] = z;
+ VEX2[10][0] = 6.5;
+ VEX2[10][1] = -0.5;
+ VEX2[10][2] = z;
+ VEX2[11][0] = 6.5;
+ VEX2[11][1] = -0.5;
+ VEX2[11][2] = 3.5;
+ VEX2[12][0] = 5.38;
+ VEX2[12][1] = 2.0;
+ VEX2[12][2] = z;
+ VEX2[13][0] = 8.5;
+ VEX2[13][1] = 3.0;
+ VEX2[13][2] = z + -0.1;
+ VEX2[14][0] = 8.5;
+ VEX2[14][1] = 3.0;
+ VEX2[14][2] = 3.5;
+ VEX2[15][0] = 5.38;
+ VEX2[15][1] = 3.0;
+ VEX2[15][2] = z;
+ VEX2[16][0] = 8.5;
+ VEX2[16][1] = 1.0;
+ VEX2[16][2] = z + -0.2;Index = 1.0;
+ repeat(17) {
+   RoboticArm1.moveToPositionLinear(VEX2[static_cast<int>(Index) - 1][static_cast<int>(1) - 1], VEX2[static_cast<int>(Index) - 1][static_cast<int>(2) - 1], VEX2[static_cast<int>(Index) - 1][static_cast<int>(3) - 1]);
+   Index = Index + 1.0;
+   wait(5, msec);
+ }
  return 0;
 }
 
