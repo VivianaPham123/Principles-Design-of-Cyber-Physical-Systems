@@ -1,0 +1,45 @@
+#include "vex.h"
+ 
+using namespace vex;
+int main() {
+// Initializing Robot Configuration. DO NOT REMOVE!
+vexcodeInit();
+int threshold = 20;
+wait(200, msec);
+Drivetrain.drive(forward);
+waitUntil(CenterLineTracker.value(pct)<threshold);
+Drivetrain.stop(brake);
+armMotor.setStopping(coast);
+armMotor.setTimeout(2, seconds);
+armMotor.spinToPosition(360, degrees);
+wait(1, seconds);
+armMotor.spin(reverse);
+waitUntil(frontBumper.pressing());
+wait(0.5,seconds);
+Drivetrain.driveFor(forward, 100, mm, 25, velocityUnits::pct);
+wait(200, msec);
+Drivetrain.drive(forward);
+waitUntil(CenterLineTracker.value(pct)<threshold);
+Drivetrain.stop(brake);
+armMotor.setStopping(coast);
+armMotor.setTimeout(2, seconds);
+armMotor.spinToPosition(360, degrees);
+wait(1, seconds);
+armMotor.spin(reverse);
+waitUntil(frontBumper.pressing());
+wait(0.5,seconds);
+Drivetrain.driveFor(forward, 100, mm, 25, velocityUnits::pct);
+wait(200, msec);
+Drivetrain.drive(forward);
+waitUntil(CenterLineTracker.value(pct)<threshold);
+Drivetrain.stop(brake);
+armMotor.setStopping(coast);
+armMotor.setTimeout(2, seconds);
+armMotor.spinToPosition(360, degrees);
+wait(1, seconds);
+armMotor.spin(reverse);
+waitUntil(frontBumper.pressing());
+wait(0.5,seconds);
+Drivetrain.driveFor(forward, 100, mm, 25, velocityUnits::pct);
+Drivetrain.driveFor(reverse, 1400, mm, 25, velocityUnits::pct);
+}
