@@ -1,0 +1,144 @@
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       main.cpp                                                  */
+/*    Author:       C:\Users\55616137                                         */
+/*    Created:      Mon Aug 22 2022                                           */
+/*    Description:  V5 project                                                */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Drivetrain           drivetrain    1, 10           
+// armMotor             motor         8               
+// clawMotor            motor         3               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+#include "vex.h"
+
+using namespace vex;
+
+int main() {
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
+  armMotor.setStopping(hold);
+  clawMotor.setStopping(hold);
+  armMotor.setTimeout(3, seconds);
+  clawMotor.setTimeout(3, seconds);
+  
+  //First block
+  armMotor.spinToPosition(290, degrees);
+  clawMotor.spinToPosition(200, degrees);
+  Drivetrain.driveFor(forward, 175, mm);
+  wait(1, seconds);
+  clawMotor.spinToPosition(50, degrees);
+  armMotor.spinToPosition(400, degrees);
+  Drivetrain.driveFor(reverse, 175, mm);
+
+  //First destination
+  Drivetrain.turnFor(right, 105, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(right, 93, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 300, mm);
+
+  //Drop first block
+  armMotor.spinToPosition(210, degrees);
+  clawMotor.spinToPosition(200, degrees);
+
+  //Back to home
+  Drivetrain.driveFor(reverse, 300, mm);
+  Drivetrain.turnFor(right, 103, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(right, 92, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+
+  //Second block
+  Drivetrain.driveFor(forward, 200, mm);
+  wait(1, seconds);
+  clawMotor.spinToPosition(50, degrees);
+  armMotor.spinToPosition(300, degrees);
+  Drivetrain.driveFor(reverse, 150, mm);
+
+  //Second destination
+  Drivetrain.turnFor(right, 105, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(left, 90, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 300, mm);
+
+  //Drop second block
+  armMotor.spinToPosition(110, degrees);
+  clawMotor.spinToPosition(200, degrees);
+  armMotor.spinToPosition(140, degrees);
+
+  //Back to home
+  Drivetrain.driveFor(reverse, 300, mm);
+  Drivetrain.turnFor(left, 90, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 610, mm);
+  Drivetrain.turnFor(right, 95, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+
+  //Third block
+  Drivetrain.driveFor(forward, 280, mm);
+  wait(1, seconds);
+  clawMotor.spinToPosition(50, degrees);
+  armMotor.spinToPosition(250, degrees);
+  Drivetrain.driveFor(reverse, 200, mm);
+
+  //Third destination
+  Drivetrain.turnFor(left, 95, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(right, 90, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 300, mm);
+
+  //Drop third block
+  clawMotor.spinToPosition(200, degrees);
+
+  //Back to home
+  Drivetrain.driveFor(reverse, 300, mm);
+  armMotor.spinToPosition(100, degrees);
+  Drivetrain.turnFor(right, 100, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(left, 92, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+
+  //Fourth block
+  armMotor.spinToPosition(0, degrees);
+  Drivetrain.driveFor(forward, 350, mm);
+  wait(1, seconds);
+  clawMotor.spinToPosition(50, degrees);
+  armMotor.spinToPosition(200, degrees);
+  Drivetrain.driveFor(reverse, 250, mm);
+
+  //Fourth destination
+  Drivetrain.turnFor(left, 90, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(left, 85, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 300, mm);
+
+  //Drop fourth block
+  armMotor.spinToPosition(110, degrees);
+  clawMotor.spinToPosition(200, degrees);
+  armMotor.spinToPosition(100, degrees);
+
+  //Back to home
+  Drivetrain.driveFor(reverse, 300, mm);
+  Drivetrain.turnFor(left, 95, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  Drivetrain.driveFor(forward, 600, mm);
+  Drivetrain.turnFor(left, 88, degrees, 30, velocityUnits::pct);
+  wait(0.25, seconds);
+  armMotor.spinToPosition(0, degrees);
+  clawMotor.spinToPosition(0, degrees);
+}
